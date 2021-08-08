@@ -158,6 +158,26 @@ View(penguins)
 penguins %>% 
   mutate(body_mass_kg=body_mass_g/1000, flipper_length_m=flipper_length_mm/1000)
 
+# Week 3 Day 3: Take a Closer Look at the Data 
+
+  # Video: Same data, different outcome
+
+install.packages('Tmisc')
+library(Tmisc)
+data(quartet)
+View(quartet)
+
+quartet %>% 
+  group_by(set) %>% 
+  summarize(mean(x),sd(x),mean(y),sd(y),cor(x,y))
+
+ggplot(quartet,aes(x,y)) + geom_point() + geom_smooth(method=lm,se=FALSE) + facet_wrap('set')
+
+install.packages('datasauRus')
+library('datasauRus')
+
+ggplot(datasaurus_dozen,aes(x=x,y=y,colour=dataset)) + 
+  geom_point()+theme_void()+theme(legend.position = "none")+facet_wrap('dataset',ncol=3)
 
 
 
