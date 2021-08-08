@@ -179,34 +179,63 @@ library('datasauRus')
 ggplot(datasaurus_dozen,aes(x=x,y=y,colour=dataset)) + 
   geom_point()+theme_void()+theme(legend.position = "none")+facet_wrap('dataset',ncol=3)
 
+  # Video: The Bias Function
+
+install.packages("SimDesign")
+library(SimDesign)
+
+actual_temp <- c(68.3, 70, 72.4, 71, 67, 70)
+predicted_temp <- c(67.9, 69, 71.5, 70, 67,69)
+bias(actual_temp, predicted_temp)
+
+actual_sales <- c(150, 203, 137, 247, 116, 287)
+predicted_sales <- c(200, 300, 150, 250, 150, 300)
+bias(actual_sales, predicted_sales)
 
 
+# Hands on Activity: Changing Your Data
 
+# Steps 1 and 3 complete from earlier exercise
 
+head(hotel_bookings)
 
+# Practice Quiz:  1. There are 32 columns (variables) in the dataset.
+  #               2. True, it is character data
 
+str(hotel_bookings)
+glimpse(hotel_bookings)
+colnames(hotel_bookings)
 
+arrange(hotel_bookings, desc(lead_time))
 
+# Practice Quiz: Highest lead time is A: 737
 
+head(hotel_bookings)
 
+hotel_bookings_v2 <- arrange(hotel_bookings, desc(lead_time))
 
+head(hotel_bookings_v2)
 
+max(hotel_bookings$lead_time)
+min(hotel_bookings$lead_time)
 
+mean(hotel_bookings$lead_time)
 
+mean(hotel_bookings_v2$lead_time)
 
+# Practice Quiz: Average lead time is D: 104.0114
 
+hotel_bookings_city <- filter(hotel_bookings, hotel_bookings$hotel=="City Hotel")
 
+head(hotel_bookings_city)
 
+mean(hotel_bookings_city$lead_time)
 
+hotel_summary <- 
+  hotel_bookings %>% 
+  group_by(hotel) %>% 
+  summarise(average_lead_time=mean(lead_time),
+            min_lead_time=min(lead_time),
+            max_lead_time=max(lead_time))
 
-
-
-
-
-
-
-
-
-
-
-
+head(hotel_summary)
