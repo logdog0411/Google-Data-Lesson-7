@@ -1,0 +1,32 @@
+---
+title: "PenguinPalooza"
+author: "Albert"
+date: "8/13/2021"
+output: html_document
+---
+
+# PenguinPalooza!
+
+## AKA The Return of the Flipper
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+install.packages("ggplot2")
+install.packages("palmerpenguins")
+library(ggplot2)
+library(palmerpenguins)
+```
+
+```{r}
+ggplot(data=penguins)+geom_point(mapping=aes(x=flipper_length_mm, y=body_mass_g, color=species))+facet_grid(sex~species)
+```
+
+## My First Attempt at an R Markdown File
+
+I am using the lesson 7 Palmer Penguins plots to initiate an R Markdown file. *Some of the things I will experiment with are italics,* **Bolding words and phrases for special emphasis,** and using
+
+# Large Headers,
+
+#### And Smaller Headers.
+
+
